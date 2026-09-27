@@ -8,7 +8,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added login wall for code search for Ask GitHub. [#1680](https://github.com/sourcebot-dev/sourcebot/pull/1680)
+
+### Removed
+- Removed the Ask Sourcebot first-visit tutorial banner. [#1675](https://github.com/sourcebot-dev/sourcebot/pull/1675)
+- Removed suggested example queries from the Ask landing page. [#1674](https://github.com/sourcebot-dev/sourcebot/pull/1674)
+
+### Fixed
+- Made the default home page configurable with `DEFAULT_HOME_VIEW_PAGE`, defaulting to Code Search and supporting Ask. [#1677](https://github.com/sourcebot-dev/sourcebot/pull/1677)
+- Require authentication for the streaming and blocking Ask APIs in Public SaaS deployments. [#1679](https://github.com/sourcebot-dev/sourcebot/pull/1679)
+
+## [5.1.14] - 2026-09-17
+
+### Added
 - Added privacy-scoped setup wizard funnel and Docker startup-failure telemetry with deployment identity handoff, Node.js 20.20.0 support, and cross-platform end-to-end test coverage. [#1653](https://github.com/sourcebot-dev/sourcebot/pull/1653)
+- Added an admin-configurable Markdown message with access instructions and links on sign-in and sign-up pages. [#1668](https://github.com/sourcebot-dev/sourcebot/pull/1668)
+
+### Fixed
+- [EE] Fixed missing account-linking prompts during OAuth authorization and restored prompts when new optional providers are configured. [#1663](https://github.com/sourcebot-dev/sourcebot/pull/1663)
+- Prevented browser performance instrumentation from breaking code views when `performance.measure()` returns no value. [#1665](https://github.com/sourcebot-dev/sourcebot/pull/1665)
+- Added specific authentication error messages and recovery guidance shared by the login form and error page. [#1669](https://github.com/sourcebot-dev/sourcebot/pull/1669)
 
 ## [5.1.13] - 2026-09-12
 
