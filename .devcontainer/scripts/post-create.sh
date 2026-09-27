@@ -24,6 +24,7 @@ yarn dev:prisma:migrate:dev
 
 echo ""
 echo "[4/5] Creating default config.json..."
+if [ ! -f config.json ]; then
 cat > config.json << 'EOF'
 {
     "$schema": "https://raw.githubusercontent.com/sourcebot-dev/sourcebot/main/schemas/v3/index.json",
@@ -35,6 +36,7 @@ cat > config.json << 'EOF'
     }
 }
 EOF
+fi
 
 echo ""
 echo "[5/5] Configuring Claude Code to skip onboarding..."
