@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sourcebot-dev/sourcebot/main/schemas/v3/index.json",
+  "connections": {
+    "github": {
+      "type": "github",
+      "token": {
+        "env": "GITHUB_TOKEN"
+      },
+      "repos": [
+        "sourcebot-dev/sourcebot",
+        "riteshvish02/FlightsService-AirlineBooking"
+      ]
+    }
+  }
+}
