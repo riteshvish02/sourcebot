@@ -17,11 +17,11 @@ export default function TestHighlightPage() {
 
     return (
         <div className="p-8 max-w-3xl mx-auto space-y-6 bg-background text-foreground min-h-screen">
-            <h1 className="text-2xl font-bold text-red-500">
-                🚨 Live Reproduction: Multiline Highlight Bug
+            <h1 className="text-2xl font-bold text-emerald-500">
+                ✅ Multiline Range Highlight: Fix Verification
             </h1>
             <p className="text-sm text-muted-foreground">
-                Notice: The match is supposed to highlight from Line 1 (&quot;async (&quot;) through Line 2 (entire line) to Line 3 (&quot;items&quot;).
+                Match range: Line 1 (&quot;async (&quot;) &rarr; Line 2 (entire line) &rarr; Line 3 (&quot;items&quot;).
             </p>
 
             <div className="border border-border rounded-lg p-4 bg-muted/30">
@@ -40,14 +40,15 @@ export default function TestHighlightPage() {
                 </div>
             </div>
 
-            <div className="p-4 bg-destructive/10 border border-destructive/30 rounded text-sm space-y-2">
-                <p className="font-semibold text-destructive">
-                    👀 Look at the code box above with your own eyes:
+            <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded text-sm space-y-2 text-emerald-300">
+                <p className="font-semibold text-emerald-400">
+                    🎉 Verification Checklist:
                 </p>
                 <ul className="list-disc pl-5 space-y-1">
-                    <li>Line 1: Highlighting is broken / cut off.</li>
-                    <li>Line 2: <b>ZERO HIGHLIGHT!</b> It was completely skipped because of <code>range.start === 2 || range.end === 2</code>!</li>
-                    <li>Line 3: Highlighting is broken / cut off.</li>
+                    <li>Line 1: <code>async (</code> highlighted seamlessly to the end of the line!</li>
+                    <li>Line 2: <b>FULL LINE HIGHLIGHTED!</b> (Previously was completely skipped with 0 highlight)</li>
+                    <li>Line 3: <code>items</code> highlighted up to column 10!</li>
+                    <li>Line 4: Unhighlighted, as expected!</li>
                 </ul>
             </div>
         </div>

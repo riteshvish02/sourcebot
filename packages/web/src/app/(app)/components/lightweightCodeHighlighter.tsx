@@ -64,13 +64,26 @@ export const LightweightCodeHighlighter = memo<LightweightCodeHighlighter>((prop
                 .map(async (line, index) => {
                     const lineNumber = index + lineNumbersOffset;
 
-                    // @todo: we will need to handle the case where a range spans multiple lines.
-                    const ranges = highlightRanges?.filter(range => {
-                        return range.start.lineNumber === lineNumber || range.end.lineNumber === lineNumber;
-                    }).map(range => ({
-                        from: range.start.column - 1,
-                        to: range.end.column - 1,
-                    }));
+                    const ranges = highlightRanges
+                        ?.filter(
+                            (range) =>
+                                lineNumber >= range.start.lineNumber &&
+                                lineNumber <= range.end.lineNumber,
+                        )
+                        .map((range) => {
+                            const isStart = range.start.lineNumber === lineNumber;
+                            const isEnd = range.end.lineNumber === lineNumber;
+
+                            const from = isStart
+                                ? Math.max(0, range.start.column - 1)
+                                : 0;
+                            const to = isEnd
+                                ? Math.min(line.length, range.end.column - 1)
+                                : line.length;
+
+                            return { from, to };
+                        })
+                        .filter((range) => range.to > range.from);
 
                     const snippets = await highlightCode(
                         language,
